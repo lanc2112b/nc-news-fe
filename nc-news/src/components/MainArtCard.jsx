@@ -28,8 +28,7 @@ const MainArtCard = () => {
         <Card.Img variant="top" src={article.article_img_url} />
         <Card.Body>
           <Card.Text>
-            Really need some text for the body, rather than letting the title
-            initiate discussion
+            {article.body}
           </Card.Text>
           <Card.Text className="font-weight-bold d-flex flex-row justify-content-between">
             <span>
