@@ -9,3 +9,26 @@ export const getArticles = () => {
     return results.data;
   });
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export const getCommentsByArtId = (id) => {
+
+  return newsApi.get(`/api/articles/${id}/comments`).then((results) => {
+    return results.data;
+  });
+
+};
