@@ -32,15 +32,15 @@ const MainArtCard = () => {
             initiate discussion
           </Card.Text>
           <Card.Text className="font-weight-bold d-flex flex-row justify-content-between">
-            <p>
+            <span>
               {" "}
               Author:{" "}
               <span className="font-weight-normal">{article.author}</span>
-            </p>{" "}
-            <p>
+            </span>{" "}
+            <span>
               Posted: <span className="font-weight-normal"></span>
               {article.created_at}
-            </p>
+            </span>
           </Card.Text>
         </Card.Body>
         <Card.Footer className=" d-flex flex-row justify-content-around align-items-center ">
