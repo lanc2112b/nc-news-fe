@@ -1,6 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
 
+//import "./App.scss"; // Install and modify bootstrap sometime in the future
+import { Accordion, Button, Collapse } from 'react-bootstrap';
+
+
 function App() {
   return (
     <div className="App">
