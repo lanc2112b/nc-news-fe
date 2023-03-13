@@ -6,8 +6,6 @@ import Card from "react-bootstrap/Card";
 const MainArtCard = () => {
   const { article_id } = useParams();
 
-  console.log(article_id);
-
   const [article, setArticle] = useState({});
   const [loading, setLoading] = useState(true);
 
@@ -18,6 +16,8 @@ const MainArtCard = () => {
       setLoading(false);
     });
   }, [article_id]);
+
+  if(loading) return (<p>Loading... </p>)
 
   return (
     <section>
