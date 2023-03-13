@@ -9,3 +9,10 @@ export const getArticles = () => {
     return results.data;
   });
 };
+
+export const getArticleById = (id) => {
+
+  return newsApi.get(`/articles/${id}`).then((results) => {
+    return results.data.article;
+  });
+};
