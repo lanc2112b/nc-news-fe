@@ -4,8 +4,13 @@ const newsApi = axios.create({
   baseURL: "https://api.muninn.co.uk/api/",
 });
 
-export const getArticles = () => {
-  return newsApi.get(`/articles`).then((results) => {
+export const getArticles = (topic = null, limit=40) => {
+  return newsApi.get(`/articles`, {
+    params: {
+      topic: topic,
+      limit: limit
+    }
+  }).then((results) => {
     return results.data;
   });
 };
@@ -31,4 +36,14 @@ export const patchArtVotes = (id, votes) => {
   return newsApi.patch(`/articles/${id}`, { inc_votes: votes }).then((results) => {
     return results.data.article;
   });
+}
+
+
+
+export const getTopics = () => {
+  return newsApi
+    .get(`/topics`)
+    .then((results) => {
+      return results.data.topics;
+    });
 }

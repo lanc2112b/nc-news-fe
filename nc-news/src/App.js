@@ -22,6 +22,10 @@ function App() {
             element={<MainSection element={<ArticleList />} />}
           />
           <Route
+            path="/articles/view/:topic"
+            element={<MainSection element={<ArticleList />} />}
+          />
+          <Route
             path="/articles/:article_id"
             element={<MainSection element={<MainArticle />} />}
           />

@@ -7,7 +7,7 @@ const HeaderNav = () => {
     <Navbar collapseOnSelect bg="dark" expand="lg" variant="dark">
       <Container>
         <Navbar.Brand href="/articles">
-          <img src="logo192.png" alt="Logo for xyz" className="App-logo" />{" "}
+          <img src="/logo192.png" alt="Logo for xyz" className="App-logo" />{" "}
           NC-News
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
