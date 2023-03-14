@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+//import { useParams } from "react-router-dom";
 import { getArticleById } from "../api";
 import Card from "react-bootstrap/Card";
 import ArticleVoter from "./ArticleVoter";
+import { DateTime } from "luxon";
 
-const MainArtCard = () => {
-  const { article_id } = useParams();
+
+const MainArtCard = ({article_id}) => {
+  //const { article_id } = useParams();
 
   const [article, setArticle] = useState({});
   const [loading, setLoading] = useState(true);
@@ -19,6 +21,8 @@ const MainArtCard = () => {
   }, [article_id]);
 
   if(loading) return (<p>Loading... </p>)
+
+
 
   return (
     <section className="article-section">
@@ -38,7 +42,9 @@ const MainArtCard = () => {
               </span>{" "}
               <span>
                 Posted: <span className="font-weight-normal"></span>
-                {article.created_at}
+              {DateTime.fromISO(article.created_at).toLocaleString(
+                DateTime.DATETIME_SHORT
+              )}
               </span>
             </Card.Text>
           </Card.Body>
@@ -49,7 +55,9 @@ const MainArtCard = () => {
         </Card>
       </article>
     </section>
+
   );
+
 };
 
 export default MainArtCard;

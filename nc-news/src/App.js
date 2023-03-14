@@ -7,7 +7,7 @@ import { Row } from 'react-bootstrap';
 import MainSection from './components/MainSection';
 import { Routes, Route } from 'react-router-dom';
 import ArticleList from './components/ArticleList';
-import MainArtCard from './components/MainArtCard';
+import MainArticle from './components/MainArticle';
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
           />
           <Route
             path="/articles/:article_id"
-            element={<MainSection element={<MainArtCard />} />}
+            element={<MainSection element={<MainArticle />} />}
           />
         </Routes>
       </Row>
