@@ -2,7 +2,7 @@ import { DateTime } from 'luxon';
 import { Card } from 'react-bootstrap';
 
 const CommentCard = ({ comment }) => {
-  console.log(comment);
+
   return (
     <li className="py-2 ms-3">
       <Card>

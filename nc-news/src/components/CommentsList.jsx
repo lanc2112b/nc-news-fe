@@ -10,7 +10,6 @@ const CommentsList = ({article_id}) => {
     useEffect(() => {
         setLoading(true);
         getCommentsByArtId(article_id).then((results) => {
-            console.log(results)
             setComments(results);
             setLoading(false)
         })
