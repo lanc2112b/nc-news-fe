@@ -24,3 +24,12 @@ export const getArticleById = (id) => {
     return results.data.article;
   });
 };
+
+
+export const postCommentByArtId = (id, comment) => {
+
+  return newsApi.post(`/articles/${id}/comments`, comment).then((results) => {
+    return results;
+  })
+
+}

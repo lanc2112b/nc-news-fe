@@ -1,18 +1,19 @@
-import { Accordion, Button } from "react-bootstrap";
+import { Accordion } from "react-bootstrap";
+import CommentForm from "./CommentForm";
 
-const CommentAccordian = ({ comment_id }) => {
+const CommentAccordian = ({ article_id , comments, setComments}) => {
   return (
     <section className="comment-adder">
-      <Accordion defaultActiveKey="0">
+      <Accordion>
         <Accordion.Item eventKey="0">
-          <Accordion.Button>
-            <Button variant="primary" onClick={() => console.log("Primary")}>
-              Add Comment
-            </Button>
+          <Accordion.Button className="ps-4 p-2 text-right">
+            Add Comment
           </Accordion.Button>
 
           <Accordion.Body>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            <CommentForm
+              article_id={article_id}  comments={comments} setComments={setComments} 
+            />
           </Accordion.Body>
         </Accordion.Item>
       </Accordion>
