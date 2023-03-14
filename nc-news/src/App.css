@@ -34,3 +34,31 @@
   padding-left: 3px;
 }
 
+.inc_vote, .dec_vote {
+  color: hsl(0, 0%, 99%);
+}
+.inc_vote{ /*** replace these with fontawesome or some other icons  */
+  content: ' ';
+  background: url('../public/thumbs-up-solid.svg');
+  background-repeat: no-repeat;
+  background-size: cover; 
+  display: inline-block;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.dec_vote { /*** replace these with fontawesome or some other icons  */
+  background: url('../public/thumbs-down-solid.svg');
+  background-repeat: no-repeat;
+  /* background-color: #fff;
+  mask-image:url('../public/thumbs-down-solid.svg') ; */
+  background-size: cover; 
+  display: inline-block;
+  height: 1.5rem;
+  width: 1.5rem;
+
+}
+
+.vote_badge {
+  width: 2rem;
+}

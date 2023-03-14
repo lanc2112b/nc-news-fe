@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getArticleById } from "../api";
 import Card from "react-bootstrap/Card";
+import ArticleVoter from "./ArticleVoter";
 
 const MainArtCard = () => {
   const { article_id } = useParams();
@@ -42,7 +43,7 @@ const MainArtCard = () => {
             </Card.Text>
           </Card.Body>
           <Card.Footer className=" d-flex flex-row justify-content-around align-items-center ">
-            <p className="m-0">Votes: {article.votes}</p>
+            <ArticleVoter votes={article.votes} article_id={article_id} />
             <p className="m-0">Comments: {article.comment_count} </p>
           </Card.Footer>
         </Card>
