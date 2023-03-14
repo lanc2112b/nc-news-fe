@@ -2,8 +2,10 @@ const CommentsList = ({article_id}) => {
 
 
     return (
-        <section>
-            Comments here.
+        <section className="comments-list">
+            <ul>
+                Map over comments in li's
+            </ul>
         </section>
     )
 
