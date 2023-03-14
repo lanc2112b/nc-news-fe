@@ -10,25 +10,17 @@ export const getArticles = () => {
   });
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const getCommentsByArtId = (id) => {
 
   return newsApi.get(`/api/articles/${id}/comments`).then((results) => {
     return results.data;
   });
 
+};
+
+export const getArticleById = (id) => {
+
+  return newsApi.get(`/articles/${id}`).then((results) => {
+    return results.data.article;
+  });
 };
