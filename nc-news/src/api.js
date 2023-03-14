@@ -12,8 +12,8 @@ export const getArticles = () => {
 
 export const getCommentsByArtId = (id) => {
 
-  return newsApi.get(`/api/articles/${id}/comments`).then((results) => {
-    return results.data;
+  return newsApi.get(`/articles/${id}/comments`).then((results) => {
+    return results.data.comments;
   });
 
 };
