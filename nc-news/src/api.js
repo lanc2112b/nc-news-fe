@@ -24,3 +24,11 @@ export const getArticleById = (id) => {
     return results.data.article;
   });
 };
+
+
+export const patchArtVotes = (id, votes) => {
+
+  return newsApi.patch(`/articles/${id}`, { inc_votes: votes }).then((results) => {
+    return results.data.article;
+  });
+}
