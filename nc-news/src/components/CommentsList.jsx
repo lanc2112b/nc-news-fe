@@ -1,19 +1,20 @@
 import { useEffect, useState } from "react";
 import { getCommentsByArtId } from "../api";
+import CommentAccordian from "./CommentAccordian";
 
 import CommentCard from './CommentCard';
 
 const CommentsList = ({article_id}) => {
-    const [comments, setComments] = useState([]);
-    const [loading, setLoading] = useState(true);
+  const [comments, setComments] = useState([]);
+
+  const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        setLoading(true);
-        getCommentsByArtId(article_id).then((results) => {
-            setComments(results);
-            setLoading(false)
-        })
-
+      setLoading(true);
+      getCommentsByArtId(article_id).then((results) => {
+        setComments(results);
+        setLoading(false);
+      });
     }, [article_id]);
 
     if (loading) {
@@ -24,8 +25,12 @@ const CommentsList = ({article_id}) => {
 
     return (
       <section className="comments-list">
-            <ul className="list-unstyled">
-                <li className="ms-3"><h3>Comments: </h3></li>
+        <CommentAccordian article_id={article_id} comments={comments} setComments={setComments} />
+        <hr />
+        <ul className="list-unstyled">
+          <li className="ms-3">
+            <h3>Comments: </h3>
+          </li>
           {comments.map((element) => {
             return <CommentCard key={element.comment_id} comment={element} />;
           })}
