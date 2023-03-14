@@ -51,4 +51,35 @@
   padding: 0.2rem 0 0 0;
   font-size: 0.8rem;
   margin-bottom: 1rem;
+=======
+.inc_vote, .dec_vote {
+  color: hsl(0, 0%, 99%);
+}
+.inc_vote{ /*** replace these with fontawesome or some other icons  */
+  background: url('../public/thumbs-up-solid.svg');
+  background-repeat: no-repeat;
+  background-size: cover; 
+  display: inline-block;
+  height: 1.5rem;
+  width: 1.5rem;
+  padding: 0;
+  margin: 0;
+}
+
+.dec_vote { /*** replace these with fontawesome or some other icons  */
+  background: url('../public/thumbs-down-solid.svg');
+  background-repeat: no-repeat;
+  /* background-color: #fff;
+  mask-image:url('../public/thumbs-down-solid.svg') ; */
+  background-size: cover; 
+  display: inline-block;
+  height: 1.5rem;
+  width: 1.5rem;
+    padding: 0;
+  margin: 0;
+
+}
+
+.vote_badge {
+  width: 2rem;
 }

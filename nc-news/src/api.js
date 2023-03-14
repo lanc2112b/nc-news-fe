@@ -25,11 +25,16 @@ export const getArticleById = (id) => {
   });
 };
 
-
 export const postCommentByArtId = (id, comment) => {
 
   return newsApi.post(`/articles/${id}/comments`, comment).then((results) => {
     return results;
   })
 
+
+export const patchArtVotes = (id, votes) => {
+
+  return newsApi.patch(`/articles/${id}`, { inc_votes: votes }).then((results) => {
+    return results.data.article;
+  });
 }
