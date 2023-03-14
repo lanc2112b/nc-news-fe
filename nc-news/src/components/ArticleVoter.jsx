@@ -30,19 +30,19 @@ const ArticleVoter = ({ votes, article_id }) => {
 
   return (
     <div className="d-flex flex-row align-items-center">
-      <Button className="p-2" variant="teal" onClick={() => voterHandler(1)}>
+      <Button className="p-2" variant="success" onClick={() => voterHandler(1)}>
         <i className="inc_vote"></i>
       </Button>
       <Badge bg="light" text="dark" className="vote_badge">
         {dispVotes}
       </Badge>
       <Button
-        className="p-2"
-        variant="orange"
+        className="p-2 "
+        variant="danger"
         value="dec"
         onClick={() => voterHandler(-1)}
       >
-        <i className="dec_vote"></i>
+        <i className="dec_vote mt-1"></i>
       </Button>
     </div>
   );

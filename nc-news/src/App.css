@@ -38,13 +38,14 @@
   color: hsl(0, 0%, 99%);
 }
 .inc_vote{ /*** replace these with fontawesome or some other icons  */
-  content: ' ';
   background: url('../public/thumbs-up-solid.svg');
   background-repeat: no-repeat;
   background-size: cover; 
   display: inline-block;
   height: 1.5rem;
   width: 1.5rem;
+  padding: 0;
+  margin: 0;
 }
 
 .dec_vote { /*** replace these with fontawesome or some other icons  */
@@ -56,6 +57,8 @@
   display: inline-block;
   height: 1.5rem;
   width: 1.5rem;
+    padding: 0;
+  margin: 0;
 
 }
 
