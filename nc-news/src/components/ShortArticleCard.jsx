@@ -1,5 +1,6 @@
 import Card from "react-bootstrap/Card";
-import {Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { DateTime } from 'luxon';
 
 const ShortArticleCard = ({ article }) => {
   return (
@@ -16,13 +17,18 @@ const ShortArticleCard = ({ article }) => {
           </Card.Title>
           <Card.Subtitle className="pb-2">Topic: {article.topic}</Card.Subtitle>
           <Card.Text className="pb-1">
-            Evidently articles have no body text?? Hey ho.
+            <Link to={`/articles/${article.article_id}`}>Read more...</Link>
           </Card.Text>
         </Card.Body>
-        <Card.Footer className="w-100 d-flex flex-row justify-content-between align-items-center">
-          <p className="p-0 m-0">Votes: {article.votes}</p>{" "}
-          <p className="p-0 m-0">Comments: {article.comment_count} </p>
-          <Link to={`/articles/${article.article_id}`}> Read More...</Link>
+        <Card.Footer className="w-100 p-2 d-flex flex-row justify-content-between">
+          <p className="mb-1">Votes: {article.votes}</p>
+          <p className="mb-1">Comments: {article.comment_count} </p>
+          <p className="mb-1">
+            Posted:{" "}
+            {DateTime.fromISO(article.created_at).toLocaleString(
+              DateTime.DATETIME_SHORT
+            )}
+          </p>
         </Card.Footer>
       </Card>
     </li>

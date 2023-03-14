@@ -10,6 +10,14 @@ export const getArticles = () => {
   });
 };
 
+export const getCommentsByArtId = (id) => {
+
+  return newsApi.get(`/articles/${id}/comments`).then((results) => {
+    return results.data.comments;
+  });
+
+};
+
 export const getArticleById = (id) => {
 
   return newsApi.get(`/articles/${id}`).then((results) => {
