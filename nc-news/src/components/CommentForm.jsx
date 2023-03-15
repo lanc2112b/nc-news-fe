@@ -5,7 +5,7 @@ import { postCommentByArtId } from "../api";
 
 const CommentForm = ({ article_id, comments, setComments }) => {
 
-  const { message, setMessage } = useContext(MessageContext);
+  const { setMessage } = useContext(MessageContext);
 
   const [formData, setFormData] = useState({
     body: "",
@@ -61,7 +61,6 @@ const CommentForm = ({ article_id, comments, setComments }) => {
           title: "Action Complete",
           msg: "New comment added",
         });
-        console.log(message);
       }
     });
   };
