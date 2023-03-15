@@ -83,3 +83,41 @@
 .vote_badge {
   width: 2rem;
 }
+
+.filter_bar hr {
+  width: 98%;
+  margin: 1rem auto !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.button-up::before {
+  content: '\01F845';
+  font-size:1rem;
+  line-height:1rem;
+}
+
+.button-down::before {
+  content: '\01F847';
+  font-size:1rem;
+  font-size:1rem;
+  line-height:1rem;
+}
+
+.display-filter {
+
+width: 4rem;
+}
+
+.column-filter {
+  max-width: 12rem;
+}
