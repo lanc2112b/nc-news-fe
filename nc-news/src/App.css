@@ -83,3 +83,13 @@
 .vote_badge {
   width: 2rem;
 }
+
+.profile_link {
+  display: none;
+}
+
+.delete-comment::before {
+  content: '	\2715';
+  color: #fff;
+  font-weight:800;
+}
