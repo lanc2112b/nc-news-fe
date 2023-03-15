@@ -3,36 +3,40 @@ import { getTopics } from "../api";
 import { Nav } from 'react-bootstrap';
 import TopicItems from "./TopicItems";
 
-const TopicCard = () => {
+const TopicCard = ({ topic, tabSelector }) => {
 
-    const [topics, setTopics] = useState({});
-    const [loading, setLoading] = useState(true)
+  const [topics, setTopics] = useState({});
+  const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        setLoading(true)
-        getTopics().then((results) => {
-            //console.log(results, 'in component')
-            setTopics(results);
-            setLoading(false);
-        })
-    },[])
+  useEffect(() => {
+    setLoading(true);
+    getTopics().then((results) => {
+      setTopics(results);
+      setLoading(false);
+    });
+  }, []);
 
-    if (loading) return (<p>Loading...</p>);
+  const tabTopic = (topic === null) ? 'articles' : topic;
 
-    return (
-      <Nav fill variant="tabs" className="articles-tablist">
-        <Nav.Item>
-          <Nav.Link href={`/articles`} eventKey="/articles">
-            All
-          </Nav.Link>
-        </Nav.Item>
-        {topics.map((element, index) => {
-          //console.log(element.slug, index);
-          return <TopicItems key={index} topic={element} />;
-        })}
-      </Nav>
-    );
-
+  if (loading) return <p>Loading...</p>;
+  
+  return (
+    <Nav
+      fill
+      variant="tabs"
+      className="articles-tablist"
+      defaultActiveKey="articles"
+      activeKey={tabTopic}
+      onSelect={tabSelector}
+    >
+      <Nav.Item>
+        <Nav.Link eventKey="articles">All</Nav.Link>
+      </Nav.Item>
+      {topics.map((element, index) => {
+        return <TopicItems key={index} topicObj={element} />;
+      })}
+    </Nav>
+  );
 }
 
 export default TopicCard;

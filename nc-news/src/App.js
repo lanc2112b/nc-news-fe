@@ -22,7 +22,7 @@ function App() {
             element={<MainSection element={<ArticleList />} />}
           />
           <Route
-            path="/articles/view/:topic"
+            path="/articles/view/:topic_id"
             element={<MainSection element={<ArticleList />} />}
           />
           <Route
