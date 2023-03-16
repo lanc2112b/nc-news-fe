@@ -6,6 +6,7 @@ import { UserContext } from "../contexts/User";
 
 import CommentCard from "./CommentCard";
 import FlashMessage from "./FlashMessage";
+import LoaderSmall from "./LoaderSmall";
 
 const CommentsList = ({ article_id }) => {
   const { user } = useContext(UserContext);
@@ -64,9 +65,8 @@ const CommentsList = ({ article_id }) => {
     });
   }, [article_id, commentDeleted]);
 
-  if (loading) {
-    return <p>Loading...</p>;
-  }
+  if (loading) return <LoaderSmall content={'Loading Comments...'} />;
+  
 
   return (
     <section className="comments-list">

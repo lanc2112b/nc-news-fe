@@ -126,6 +126,17 @@
   height: 100vh;
 }
 
+
 .fill_height {
   min-height: 100%;
+}
+
+.messsage_box {
+
+  background-color: hsla(0, 0%, 30%, 50%);
+
+}
+
+.spinner_section_lg{
+  min-height: 60dvh;
 }

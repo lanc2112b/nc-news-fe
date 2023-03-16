@@ -4,6 +4,7 @@ import { getArticles } from "../api";
 import ShortArticleCard from "./ShortArticleCard";
 import TopicCard from "./TopicCard";
 import ArticleFilter from "./ArticleFilter";
+import LoaderLarge from "./LoaderLarge";
 
 const ArticleList = () => {
 
@@ -71,7 +72,7 @@ const ArticleList = () => {
   }, [topic, sortCol, sortDir, limitVal]);
 
   if (loading) {
-    return <p>Loading.... </p>;
+    return <LoaderLarge content={'Loading Articles...'} />;
   }
 
   return (

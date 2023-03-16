@@ -4,6 +4,7 @@ import { getArticleById } from "../api";
 import Card from "react-bootstrap/Card";
 import ArticleVoter from "./ArticleVoter";
 import { DateTime } from "luxon";
+import LoaderLarge from "./LoaderLarge";
 
 
 const MainArtCard = ({article_id}) => {
@@ -20,7 +21,7 @@ const MainArtCard = ({article_id}) => {
     });
   }, [article_id]);
 
-  if(loading) return (<p>Loading... </p>)
+  if(loading) return <LoaderLarge content={'Loading Article...'} />
 
 
 
