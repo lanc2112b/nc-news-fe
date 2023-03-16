@@ -34,7 +34,6 @@ const MainArtCard = ({article_id}) => {
         });
       })
       .catch((error) => {
-        console.log(error.response.status);
         if (error.response.status === 404) {
           setArticleError(404);
           setLoading(false);
@@ -42,6 +41,8 @@ const MainArtCard = ({article_id}) => {
           setArticleError(500);
           setLoading(false);
         } else {
+          setLoading(false);
+          setArticleError(true);
           setMessage({
             msgType: "error",
             showMsg: true,
@@ -57,6 +58,7 @@ const MainArtCard = ({article_id}) => {
 
   if (articleError === 404) return <NotFoundError message={"ARTICLE "} />;
   if (articleError === 500) return <FiveOhOhError />;
+  if (articleError) return ;
 
   return (
     <section className="article-section">

@@ -88,7 +88,6 @@ const ArticleList = () => {
       })
       .catch((error) => {
         if (error.response.status === 404) {
-          console.log(error);
           setArticleError(404);
           setLoading(false);
         } else if (error.response.status === 500) {
