@@ -2,6 +2,10 @@
 
 This serves as a front end app for the backend app app, nc-news, created using react & react-bootstrap. 
 
+### Example  
+
+[https://react.muninn.co.uk](https://react.muninn.co.uk/articles)
+
 ### Main dependencies  
 ```
 react
