@@ -55,3 +55,12 @@ export const getTopics = () => {
       return results.data.topics;
     });
 }
+
+export const deleteUserCommentById = (id) => {
+
+  return newsApi.delete(`/comments/${id}`)
+    .then((result) => {
+    return result;
+  });
+
+}
