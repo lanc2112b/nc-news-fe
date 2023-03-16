@@ -1,6 +1,5 @@
 import './App.css';
 //import "./App.scss"; // Install and modify bootstrap sometime in the future
-
 import Header from './components/Header';
 import Container from "react-bootstrap/Container";
 import { Row } from 'react-bootstrap';

@@ -4,6 +4,7 @@ export const MessageContext = createContext();
 
 export const MessageProvider = ({ children }) => {
   const initial = {
+    msgType: null,
     showMsg: null,
     title: null,
     msg: null,

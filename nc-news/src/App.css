@@ -140,3 +140,15 @@
 .spinner_section_lg{
   min-height: 60dvh;
 }
+
+.server_error {
+
+  background: url('../public/oil_change_2400.jpg') no-repeat center center;
+  height: 100vh;
+}
+
+.no_articles {
+  background: url('../public/Searching_2400.jpg') no-repeat top center;
+  background-size: auto;
+  height: 80vh;
+}

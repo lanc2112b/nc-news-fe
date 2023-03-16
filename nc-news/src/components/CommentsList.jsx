@@ -3,7 +3,6 @@ import { useEffect, useState, useContext } from "react";
 import { getCommentsByArtId, deleteUserCommentById } from "../api";
 import CommentAccordian from "./CommentAccordian";
 import { UserContext } from "../contexts/User";
-
 import CommentCard from "./CommentCard";
 import FlashMessage from "./FlashMessage";
 import LoaderSmall from "./LoaderSmall";
@@ -19,6 +18,7 @@ const CommentsList = ({ article_id }) => {
   const [loading, setLoading] = useState(true);
 
   const deleteHandler = (event) => {
+
     const val = event.target.value;
 
     if (isNaN(val)) return;
@@ -28,33 +28,32 @@ const CommentsList = ({ article_id }) => {
     });
 
     if (currentComment.author === user.username) {
-      deleteUserCommentById(val).then((result) => {
-        if (result.status === 204) {
+      deleteUserCommentById(val)
+        .then((result) => {
           const filteredComments = comments.filter((element) => {
             return element.comment_id !== val;
           });
           setComments(filteredComments);
           setCommentDeleted(true);
           setMessage({
+            msgType: 'info',
             showMsg: true,
-            variant: 'success',
+            variant: "success",
             title: "Action Complete",
             msg: "Comment deleted",
           });
-
-        } else {
+        })
+        .catch((error) => {
           setMessage({
+            msgType: 'info',
             showMsg: true,
             variant: "danger",
             title: "Error",
-            msg: "Something went wrong",
+            msg: "Could not delete comment",
           });
-        }
-      });
-    } else {
-      console.log("incorrect user");
+        });
     }
-  };
+  }
 
   useEffect(() => {
     setLoading(true);

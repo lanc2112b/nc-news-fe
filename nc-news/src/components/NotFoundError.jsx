@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 
-const NotFoundError = () => {
+const NotFoundError = ({message}) => {
 
     return (
       <section className="w-100 not_found fill_height">
         <div className="w-75 messsage_box mx-auto px-4 fill_height text-white text-center d-flex flex-column align-items-center justify-content-center">
-          <h3 className="display-2 mb-0">404 NOT FOUND</h3>
+          <h3 className="display-2 mb-0">404 {message ?? ''}NOT FOUND</h3>
           <p>
             Whatever it was you were looking for, the http pixies couldn't find
             it. It's very much like lost socks, you know they went in, and now?
