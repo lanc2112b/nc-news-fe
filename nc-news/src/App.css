@@ -120,3 +120,12 @@
 .column-filter {
   max-width: 12rem;
 }
+
+.not_found {
+  background: url('../public/404_Launderette_Cover.jpg') no-repeat center center;
+  height: 100vh;
+}
+
+.fill_height {
+  min-height: 100%;
+}

@@ -64,7 +64,6 @@ const ArticleList = () => {
 
   useEffect(() => {
     setLoading(true);
-    console.log(limitVal)
     getArticles(topic, sortCol, sortDir, limitVal).then((results) => {
       setArticles(results.articles);
       setLoading(false);
