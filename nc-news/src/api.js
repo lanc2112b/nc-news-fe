@@ -4,10 +4,12 @@ const newsApi = axios.create({
   baseURL: "https://api.muninn.co.uk/api/",
 });
 
-export const getArticles = (topic = null, limit=40) => {
+export const getArticles = (topic = null, sortCol = null, sortDir = null, limit=40) => {
   return newsApi.get(`/articles`, {
     params: {
       topic: topic,
+      sort_by: sortCol,
+      order: sortDir,
       limit: limit
     }
   }).then((results) => {
