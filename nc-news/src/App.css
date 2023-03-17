@@ -142,6 +142,37 @@ footer {
 
 .carousel-caption {
   background-color: hsla(0,0%,30%, 50%)
+}
 
+.not_found {
+  background: url('../public/404_Launderette_Cover.jpg') no-repeat center center;
+  height: 100vh;
+}
+
+
+.fill_height {
+  min-height: 100%;
+}
+
+.messsage_box {
+
+  background-color: hsla(0, 0%, 30%, 50%);
 
 }
+
+.spinner_section_lg{
+  min-height: 60dvh;
+}
+
+.server_error {
+
+  background: url('../public/oil_change_2400.jpg') no-repeat center center;
+  height: 100vh;
+}
+
+.no_articles {
+  background: url('../public/Searching_2400.jpg') no-repeat top center;
+  background-size: auto;
+  height: 80vh;
+}
+
