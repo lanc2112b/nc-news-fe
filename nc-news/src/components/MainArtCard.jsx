@@ -1,28 +1,64 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { MessageContext } from "../contexts/Message";
 //import { useParams } from "react-router-dom";
 import { getArticleById } from "../api";
 import Card from "react-bootstrap/Card";
 import ArticleVoter from "./ArticleVoter";
 import { DateTime } from "luxon";
+import LoaderLarge from "./LoaderLarge";
+import NotFoundError from './NotFoundError';
+import FiveOhOhError from './FiveOhOhError';
 
 
 const MainArtCard = ({article_id}) => {
   //const { article_id } = useParams();
+  const { setMessage } = useContext(MessageContext);
 
   const [article, setArticle] = useState({});
   const [loading, setLoading] = useState(true);
+  const [articleError, setArticleError] = useState(null);
 
   useEffect(() => {
     setLoading(true);
-    getArticleById(article_id).then((result) => {
-      setArticle(result);
-      setLoading(false);
-    });
-  }, [article_id]);
+    getArticleById(article_id)
+      .then((result) => {
+        setArticle(result);
+        setLoading(false);
+        setArticleError(null);
+        setMessage({
+          msgType: null,
+          showMsg: null,
+          variant: null,
+          title: null,
+          msg: null,
+        });
+      })
+      .catch((error) => {
+        if (error.response.status === 404) {
+          setArticleError(404);
+          setLoading(false);
+        } else if (error.response.status === 500) {
+          setArticleError(500);
+          setLoading(false);
+        } else {
+          setLoading(false);
+          setArticleError(true);
+          setMessage({
+            msgType: "error",
+            showMsg: true,
+            variant: "danger",
+            title: "API Error",
+            msg: "Bad request",
+          });
+        }
+      });
+  }, [article_id, setMessage]);
 
-  if(loading) return (<p>Loading... </p>)
+  if(loading) return <LoaderLarge content={'Loading Article...'} />
 
-
+  if (articleError === 404) return <NotFoundError message={"ARTICLE "} />;
+  if (articleError === 500) return <FiveOhOhError />;
+  if (articleError) return ;
 
   return (
     <section className="article-section">
