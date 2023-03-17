@@ -1,10 +1,11 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useRef } from "react";
 import { MessageContext } from "../contexts/Message";
 import { Button, Form, FormGroup } from "react-bootstrap";
 import { postCommentByArtId } from "../api";
 
 const CommentForm = ({ article_id, comments, setComments }) => {
   const { setMessage } = useContext(MessageContext);
+  const scollToRef = useRef();
 
   const [formData, setFormData] = useState({
     body: "",
@@ -12,6 +13,7 @@ const CommentForm = ({ article_id, comments, setComments }) => {
   });
 
   const [commentError, setCommentError] = useState(null);
+
 
   const reserHandler = () => {
     //FIXME: spelling
@@ -56,6 +58,7 @@ const CommentForm = ({ article_id, comments, setComments }) => {
           title: "Action Complete",
           msg: "New comment added",
         });
+        scollToRef.current.scrollIntoView();
       })
       .catch((error) => {
         let errorMsg = "";
@@ -72,11 +75,12 @@ const CommentForm = ({ article_id, comments, setComments }) => {
           title: "Error",
           msg: errorMsg,
         });
+        scollToRef.current.scrollIntoView();
       });
   };
 
   return (
-    <section className="form-section">
+    <section className="form-section" ref={scollToRef}>
       <form onSubmit={submitHandler}>
         <FormGroup className="mb-2">
           <Form.Label htmlFor="comment_body">
