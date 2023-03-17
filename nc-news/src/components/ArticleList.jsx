@@ -7,6 +7,7 @@ import TopicCard from "./TopicCard";
 import ArticleFilter from "./ArticleFilter";
 import LoaderLarge from "./LoaderLarge";
 import NoArticles from './NoArticles';
+import Paginator from "./Paginator";
 
 const ArticleList = () => {
   const navigate = useNavigate();
@@ -114,6 +115,13 @@ const ArticleList = () => {
   if (articleError === 404) return <NoArticles backHandler={backHandler} />;
 
   //if (articleError) return <LoaderLarge content={"Error Loading Articles..."} />;
+  //const pages =
+
+  /***
+   * Pages = number of articles to display / display limit (state)
+   * page = current page (state) 
+   * query p = next / last page from buttons
+   */
 
   return (
     <section className="articles-list">
@@ -133,6 +141,7 @@ const ArticleList = () => {
           );
         })}
       </ul>
+      <Paginator />
     </section>
   );
 };
