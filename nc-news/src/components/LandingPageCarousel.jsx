@@ -14,7 +14,7 @@ const LandingPageCarousel = () => {
         <img
           className="d-block w-100"
           src="carousel_imgs/holly_and_pebbles.jpg"
-          alt="Second slide"
+          alt="Holly & Pebbles, the dogs, running through snow."
         />
 
         <Carousel.Caption>
@@ -26,7 +26,7 @@ const LandingPageCarousel = () => {
         <img
           className="d-block w-100"
           src="carousel_imgs/mrmush.jpg"
-          alt="Third slide"
+          alt="Another dog, Mr Mush, on a beach."
         />
 
         <Carousel.Caption>
@@ -39,7 +39,7 @@ const LandingPageCarousel = () => {
         <img
           className="d-block w-100"
           src="carousel_imgs/brawndo.jpg"
-          alt="First slide"
+          alt="Brawndo, HAS WHAT PLANTS CRAVE, sorry bit random."
         />
         <Carousel.Caption>
           <h3>Brawndo</h3>
@@ -50,7 +50,7 @@ const LandingPageCarousel = () => {
         <img
           className="d-block w-100"
           src="carousel_imgs/whitby.jpg"
-          alt="First slide"
+          alt="Whitby South pier, long exposure"
         />
         <Carousel.Caption>
           <h3>Whitby</h3>
@@ -61,7 +61,7 @@ const LandingPageCarousel = () => {
         <img
           className="d-block w-100"
           src="carousel_imgs/talacre.jpg"
-          alt="First slide"
+          alt="Talacre lighthouse, long exposure"
         />
         <Carousel.Caption>
           <h3>Talacre</h3>
@@ -72,7 +72,7 @@ const LandingPageCarousel = () => {
         <img
           className="d-block w-100"
           src="carousel_imgs/poppyfields.jpg"
-          alt="First slide"
+          alt="Field of poppies at dusk, long exposure"
         />
         <Carousel.Caption>
           <h3>Poppy Fields</h3>
@@ -84,7 +84,7 @@ const LandingPageCarousel = () => {
         <img
           className="d-block w-100"
           src="carousel_imgs/lincolnshire.jpg"
-          alt="First slide"
+          alt="Powerstation near lincoln with ominously dark clouds"
         />
         <Carousel.Caption>
           <h3>Dark Skies</h3>
@@ -96,7 +96,7 @@ const LandingPageCarousel = () => {
         <img
           className="d-block w-100"
           src="carousel_imgs/windmills.jpg"
-          alt="First slide"
+          alt="Wind generation turbines at dusk"
         />
         <Carousel.Caption>
           <h3>Windmills</h3>
@@ -111,7 +111,7 @@ const LandingPageCarousel = () => {
         <img
           className="d-block w-100"
           src="carousel_imgs/filey.jpg"
-          alt="First slide"
+          alt="View north looking out to sea, clouds and red sky, from Filey promenade"
         />
         <Carousel.Caption>
           <h3>Sky's On Fire</h3>
