@@ -18,6 +18,15 @@
   }
 }
 
+footer {
+  min-height: 3rem;
+  background-color: var(--bs-dark);
+  color: var(--bs-white);
+  position: sticky;
+  bottom: 0;
+  left: 0;
+}
+
 .articles-list li {
   list-style: none;
   
@@ -121,6 +130,20 @@
   max-width: 12rem;
 }
 
+
+.recent_list li{
+  background-color: var(--bs-gray-200);
+  border-radius: 0.3rem;
+}
+
+.recent_list li:nth-child(even){ 
+  background-color: var(--bs-gray-100);
+}
+
+.carousel-caption {
+  background-color: hsla(0,0%,30%, 50%)
+}
+
 .not_found {
   background: url('../public/404_Launderette_Cover.jpg') no-repeat center center;
   height: 100vh;
@@ -152,3 +175,4 @@
   background-size: auto;
   height: 80vh;
 }
+
