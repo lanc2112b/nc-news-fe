@@ -7,22 +7,24 @@ const FlashMessage = () => {
 
   const alertHandler = () => {
     setMessage({
+      msgType: null,
       showMsg: null,
       title: null,
       msg: null,
     });
   };
-
+  
   return (
-    <Alert className="mt-3"
-      variant={message.variant}
-      onClose={alertHandler}
-      show={message.showMsg}
-      dismissible
-    >
-      <Alert.Heading>{message.title}</Alert.Heading>
-      <p>{message.msg}</p>
-    </Alert>
+      <Alert
+        className="mt-3"
+        variant={message.variant}
+        onClose={alertHandler}
+        show={message.msgType === 'info' ? message.showMsg : false}
+        dismissible
+      >
+        <Alert.Heading>{message.title}</Alert.Heading>
+        <p>{message.msg}</p>
+      </Alert>
   );
 };
 

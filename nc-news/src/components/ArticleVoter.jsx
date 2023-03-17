@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { MessageContext } from "../contexts/Message";
 import { Button, Badge } from "react-bootstrap";
 import { patchArtVotes } from "../api";
 
 const ArticleVoter = ({ votes, article_id }) => {
   let newVotes = 0;
+
+  const { setMessage } = useContext(MessageContext);
 
   const [dispVotes, setDispVotes] = useState(votes);
 
@@ -18,13 +21,22 @@ const ArticleVoter = ({ votes, article_id }) => {
 
     setDispVotes(votes + newVotes);
 
-    patchArtVotes(article_id, +newVotes)
+    patchArtVotes(article_id, +newVotes)// +'c'
       .then((results) => {
+        newVotes = 0;
         setDispVotes(results.votes);
         return;
       })
-      .then(() => {
-        newVotes = 0;
+      .catch((error) => {
+        console.log(error)
+        setDispVotes(votes);
+        setMessage({
+          msgType: "info",
+          showMsg: true,
+          variant: "warning",
+          title: "API Error",
+          msg: "Unable to commit vote at this time, please try again later",
+        });
       });
   };
 

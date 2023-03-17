@@ -4,17 +4,17 @@ import { Button, Form, FormGroup } from "react-bootstrap";
 import { postCommentByArtId } from "../api";
 
 const CommentForm = ({ article_id, comments, setComments }) => {
-
   const { setMessage } = useContext(MessageContext);
 
   const [formData, setFormData] = useState({
     body: "",
-    username: "jessjelly",
+    username: "jessjelly", // Add random chars to user name then submit a comment to see error
   });
 
   const [commentError, setCommentError] = useState(null);
 
   const reserHandler = () => {
+    //FIXME: spelling
     setFormData((formData) => ({ ...formData, body: "" }));
   };
 
@@ -24,7 +24,6 @@ const CommentForm = ({ article_id, comments, setComments }) => {
     if (name === "body") {
       if (value.length < 5 || value.length > 1000) {
         setCommentError("Comment must be between 5 & 1000 chars");
-
       } else {
         setCommentError(null);
       }
@@ -43,26 +42,37 @@ const CommentForm = ({ article_id, comments, setComments }) => {
       setCommentError(null);
     }
 
-    if (commentError) {
-      // do nothing here except error message
-      return;
-    }
-
-    postCommentByArtId(article_id, formData).then((result) => {
-      if (result.status === 201) {
+    postCommentByArtId(article_id, formData)
+      .then((result) => {
         setFormData({
           body: "",
           username: "jessjelly",
         });
         setComments([result.data.comment, ...comments]);
         setMessage({
+          msgType: "info",
           showMsg: true,
           variant: "info",
           title: "Action Complete",
           msg: "New comment added",
         });
-      }
-    });
+      })
+      .catch((error) => {
+        let errorMsg = "";
+        if (error.response.data.msg === "Username not found") {
+          errorMsg = "Invalid user, are you logged in?";
+        } else {
+          //other possibilities here...
+          errorMsg = "Something went wrong";
+        }
+        setMessage({
+          msgType: "info",
+          showMsg: true,
+          variant: "warning",
+          title: "Error",
+          msg: errorMsg,
+        });
+      });
   };
 
   return (
