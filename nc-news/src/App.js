@@ -8,6 +8,8 @@ import MainSection from './components/MainSection';
 import { Routes, Route } from 'react-router-dom';
 import ArticleList from './components/ArticleList';
 import MainArticle from './components/MainArticle';
+import LandingPage from './components/LandingPage';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
       </Row>
       <Row>
         <Routes>
+          <Route path="/" element={<MainSection element={<LandingPage />} />} />
           <Route
             path="/articles"
             element={<MainSection element={<ArticleList />} />}

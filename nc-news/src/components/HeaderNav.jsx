@@ -28,7 +28,7 @@ const HeaderNav = () => {
   return (
     <Navbar collapseOnSelect bg="dark" expand="lg" variant="dark">
       <Container>
-        <Navbar.Brand href="/articles">
+        <Navbar.Brand href="/">
           <img src="/logo192.png" alt="Logo for xyz" className="App-logo" />{" "}
           NC-News
         </Navbar.Brand>
