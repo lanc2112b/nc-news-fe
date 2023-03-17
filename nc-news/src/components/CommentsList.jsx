@@ -1,5 +1,5 @@
 import { MessageContext } from "../contexts/Message";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useRef } from "react";
 import { getCommentsByArtId, deleteUserCommentById } from "../api";
 import CommentAccordian from "./CommentAccordian";
 import { UserContext } from "../contexts/User";
@@ -13,6 +13,8 @@ const CommentsList = ({ article_id }) => {
   
   const { user } = useContext(UserContext);
   const { setMessage } = useContext(MessageContext);
+
+  const scollToRef = useRef();
 
   const [comments, setComments] = useState([]);
   const [commentDeleted, setCommentDeleted] = useState(false);
@@ -48,6 +50,7 @@ const CommentsList = ({ article_id }) => {
             title: "Action Complete",
             msg: "Comment deleted",
           });
+          scollToRef.current.scrollIntoView();
         })
         .catch((error) => {
           setMessage({
@@ -57,6 +60,7 @@ const CommentsList = ({ article_id }) => {
             title: "Error",
             msg: "Could not delete comment",
           });
+          scollToRef.current.scrollIntoView();
         });
     }
   }
@@ -88,7 +92,7 @@ const CommentsList = ({ article_id }) => {
           });
         }
       });
-  }, [article_id, commentDeleted,setMessage]);
+   }, [article_id, commentDeleted,setMessage]);
 
   if (loading) return <LoaderSmall content={'Loading Comments...'} />;
   
@@ -98,7 +102,7 @@ const CommentsList = ({ article_id }) => {
 
   return (
     <section className="comments-list">
-      <hr />
+      <hr ref={scollToRef} />
       <CommentAccordian
         article_id={article_id}
         comments={comments}
