@@ -8,7 +8,7 @@ import { Routes, Route } from 'react-router-dom';
 import ArticleList from './components/ArticleList';
 import MainArticle from './components/MainArticle';
 import LandingPage from './components/LandingPage';
-import Footer from './components/Footer';
+//import Footer from './components/Footer';
 import NotFoundError from './components/NotFoundError';
 
 
