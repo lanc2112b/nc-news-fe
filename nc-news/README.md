@@ -10,6 +10,8 @@ This serves as a front end app for the backend app app, nc-news, created using r
 
 ### Main dependencies  
 ```
+Node
+npm
 react
 react-bootsrap
 react-router
