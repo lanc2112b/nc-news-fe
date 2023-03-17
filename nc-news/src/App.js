@@ -8,6 +8,7 @@ import { Routes, Route } from 'react-router-dom';
 import ArticleList from './components/ArticleList';
 import MainArticle from './components/MainArticle';
 import LandingPage from './components/LandingPage';
+import UserList from './components/UserList';
 //import Footer from './components/Footer';
 import NotFoundError from './components/NotFoundError';
 
@@ -25,6 +26,11 @@ function App() {
             path="/articles"
             element={<MainSection element={<ArticleList />} />}
           />
+          <Route
+            path="/users"
+            element={<MainSection element={<UserList />} />}
+          />
+
           <Route
             path="/articles/view/:topic_id"
             element={<MainSection element={<ArticleList />} />}

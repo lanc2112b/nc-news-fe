@@ -37,7 +37,7 @@ const HeaderNav = () => {
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/articles">Articles</Nav.Link>
-            <Nav.Link href="/articles">Users Todo</Nav.Link>
+            <Nav.Link href="/users">Users</Nav.Link>
 
             <Nav.Link href="#" onClick={userHandler}>
               Log {!user.username ? 'In': 'Out'}

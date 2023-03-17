@@ -176,3 +176,20 @@ footer {
   height: 80vh;
 }
 
+.user_card_img {
+  height:5rem;
+  width: auto;
+}
+
+.img_container_user {
+  width: 8rem;
+  margin-left: 1rem;
+}
+
+.user_card {
+  height: 6rem;
+}
+
+.card-components {
+  margin-left: 3rem;
+}
