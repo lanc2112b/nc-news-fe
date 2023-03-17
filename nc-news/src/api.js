@@ -69,3 +69,14 @@ export const deleteUserCommentById = (id) => {
   });
 
 }
+
+export const getUsers = () => {
+  return (
+    newsApi
+      .get(`/users`)
+      //.get(`/topicsz`)  // toggle the get used to force error
+      .then((results) => {
+        return results.data.users;
+      })
+  );
+};
