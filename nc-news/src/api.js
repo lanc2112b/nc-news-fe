@@ -4,10 +4,14 @@ const newsApi = axios.create({
   baseURL: "https://api.muninn.co.uk/api/",
 });
 
-export const getArticles = (topic = null, limit=40) => {
-  return newsApi.get(`/articles`, {
+export const getArticles = (topic = null, sortCol = null, sortDir = null, limit=40) => {
+  return newsApi
+    .get(`/articles`, {
+    //.get(`/articlesz`, {
     params: {
       topic: topic,
+      sort_by: sortCol,
+      order: sortDir,
       limit: limit
     }
   }).then((results) => {
@@ -32,16 +36,18 @@ export const getArticleById = (id) => {
 
 export const postCommentByArtId = (id, comment) => {
 
-  return newsApi.post(`/articles/${id}/comments`, comment).then((results) => {
-    return results;
-  })
+  return newsApi.post(`/articles/${id}/comments`, comment)
+    .then((results) => {
+      return results;
+    });
 }
 
 export const patchArtVotes = (id, votes) => {
 
-  return newsApi.patch(`/articles/${id}`, { inc_votes: votes }).then((results) => {
-    return results.data.article;
-  });
+  return newsApi.patch(`/articles/${id}`, { inc_votes: votes })
+    .then((results) => {
+      return results.data.article;
+    });
 }
 
 
@@ -49,7 +55,17 @@ export const patchArtVotes = (id, votes) => {
 export const getTopics = () => {
   return newsApi
     .get(`/topics`)
+    //.get(`/topicsz`)  // toggle the get used to force error
     .then((results) => {
       return results.data.topics;
     });
+}
+
+export const deleteUserCommentById = (id) => {
+
+  return newsApi.delete(`/comments/${id}`)
+    .then((result) => {
+    return result;
+  });
+
 }

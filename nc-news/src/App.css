@@ -18,6 +18,15 @@
   }
 }
 
+footer {
+  min-height: 3rem;
+  background-color: var(--bs-dark);
+  color: var(--bs-white);
+  position: sticky;
+  bottom: 0;
+  left: 0;
+}
+
 .articles-list li {
   list-style: none;
   
@@ -83,3 +92,87 @@
 .vote_badge {
   width: 2rem;
 }
+
+
+.profile_link {
+  display: none;
+}
+
+.delete-comment::before {
+  content: '	\2715';
+  color: #fff;
+  font-weight:800;
+}
+
+.filter_bar hr {
+  width: 98%;
+  margin: 1rem auto !important;
+}
+
+.button-up::before {
+  content: '\01F845';
+  font-size:1rem;
+  line-height:1rem;
+}
+
+.button-down::before {
+  content: '\01F847';
+  font-size:1rem;
+  font-size:1rem;
+  line-height:1rem;
+}
+
+.display-filter {
+  width: 4rem;
+}
+
+.column-filter {
+  max-width: 12rem;
+}
+
+
+.recent_list li{
+  background-color: var(--bs-gray-200);
+  border-radius: 0.3rem;
+}
+
+.recent_list li:nth-child(even){ 
+  background-color: var(--bs-gray-100);
+}
+
+.carousel-caption {
+  background-color: hsla(0,0%,30%, 50%)
+}
+
+.not_found {
+  background: url('../public/404_Launderette_Cover.jpg') no-repeat center center;
+  height: 100vh;
+}
+
+
+.fill_height {
+  min-height: 100%;
+}
+
+.messsage_box {
+
+  background-color: hsla(0, 0%, 30%, 50%);
+
+}
+
+.spinner_section_lg{
+  min-height: 60dvh;
+}
+
+.server_error {
+
+  background: url('../public/oil_change_2400.jpg') no-repeat center center;
+  height: 100vh;
+}
+
+.no_articles {
+  background: url('../public/Searching_2400.jpg') no-repeat top center;
+  background-size: auto;
+  height: 80vh;
+}
+
