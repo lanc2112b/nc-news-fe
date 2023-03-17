@@ -3,8 +3,10 @@
 This serves as a front end app for the backend app app, nc-news, created using react & react-bootstrap. 
 
 ### Example  
+[https://nc-fe.netlify.app/](https://nc-fe.netlify.app/)
 
-[https://react.muninn.co.uk](https://react.muninn.co.uk/articles)
+[https://news.muninn.co.uk](https://news.muninn.co.uk/articles)  
+(awaiting DNS propagation on this, mostly complete, YMMV)
 
 ### Main dependencies  
 ```
@@ -18,8 +20,7 @@ luxon
 
  First clone the repo, cd into the `nc-news` directory (inside the repo directory). From there run `npm install`. 
  To run the front end locally use `npm start`.
- To build a production app, use `npm run build` and when ready deploy to your selected host, instructions will vary
- from this point so check with your hosting provider.
+ To build a production app, use `npm run build` and when ready deploy to your selected host, instructions will vary from this point so check with your hosting provider.
 
 ### Learn More
 
