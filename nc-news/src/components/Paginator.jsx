@@ -1,9 +1,9 @@
 import { Pagination } from 'react-bootstrap';
 
-const Paginator = ({ currPage, articleCount, limitVal, setCurrPage }) => {
+const Paginator = ({ currPage, itemCount, limitVal, setCurrPage }) => {
 
   const iterator = [
-    ...Array(Math.ceil(articleCount / limitVal) + 1).keys(),
+    ...Array(Math.ceil(itemCount / limitVal) + 1).keys(),
   ].slice(1);
 
   const prev = currPage === 1 ? 1 : currPage - 1;

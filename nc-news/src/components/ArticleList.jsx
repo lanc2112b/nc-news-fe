@@ -133,17 +133,6 @@ const ArticleList = () => {
 
   if (articleError === 404) return <NoArticles backHandler={backHandler} />;
 
-  //if (articleError) return <LoaderLarge content={"Error Loading Articles..."} />;
-  //const pages =
-  //console.log(currPage, "current Page");
-  //console.log(articleCount, "total articles");
-  /***
-   * Pages = articleCount / limitVal
-   * page = current page (state)
-   * query p = next / last page from buttons
-   * -> p = x   --> useNavigate
-   */
-
   return (
     <section className="articles-list">
       <ArticleFilter
