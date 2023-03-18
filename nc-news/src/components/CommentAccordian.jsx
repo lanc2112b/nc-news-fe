@@ -7,16 +7,20 @@ const CommentAccordian = ({ article_id , comments, setComments}) => {
       <Accordion>
         <Accordion.Item eventKey="0">
           <OverlayTrigger
-              placement="top"
-              overlay={<Tooltip id="accordian-button">Click to add comment</Tooltip>}
-            >
-          <Accordion.Button className="ps-4 p-2 text-right">
-            Add Comment
-          </Accordion.Button>
+            placement="top"
+            overlay={
+              <Tooltip id="accordian-button">Click to add comment</Tooltip>
+            }
+          >
+            <Accordion.Button className="ps-4 p-2 text-right" size="sm">
+              Add Comment
+            </Accordion.Button>
           </OverlayTrigger>
           <Accordion.Body>
             <CommentForm
-              article_id={article_id}  comments={comments} setComments={setComments} 
+              article_id={article_id}
+              comments={comments}
+              setComments={setComments}
             />
           </Accordion.Body>
         </Accordion.Item>

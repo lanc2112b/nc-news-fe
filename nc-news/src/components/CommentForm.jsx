@@ -103,13 +103,14 @@ const CommentForm = ({ article_id, comments, setComments }) => {
           <Button
             type="reset"
             value="reset"
+            size="sm"
             variant="secondary"
             className="me-2"
             onClick={reserHandler}
           >
             Reset
           </Button>
-          <Button type="submit" variant="success">
+          <Button type="submit" variant="success" size="sm">
             Submit
           </Button>
         </FormGroup>
