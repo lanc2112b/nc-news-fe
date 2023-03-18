@@ -14,7 +14,7 @@ const Paginator = ({ currPage, itemCount, limitVal, setCurrPage }) => {
   };
 
   return (
-    <Pagination>
+    <Pagination size="sm">
       <Pagination.First
         onClick={() => {
           paginatorClickHandler(1);
