@@ -10,7 +10,7 @@ import NotFoundError from './NotFoundError';
 import FiveOhOhError from './FiveOhOhError';
 
 
-const MainArtCard = ({article_id}) => {
+const MainArtCard = ({ article_id, setCommentTotalCount }) => {
   //const { article_id } = useParams();
   const { setMessage } = useContext(MessageContext);
 
@@ -25,7 +25,8 @@ const MainArtCard = ({article_id}) => {
         setArticle(result);
         setLoading(false);
         setArticleError(null);
-        setMessage({
+        setCommentTotalCount(result.comment_count);
+          setMessage({
           msgType: null,
           showMsg: null,
           variant: null,
@@ -34,6 +35,7 @@ const MainArtCard = ({article_id}) => {
         });
       })
       .catch((error) => {
+        setCommentTotalCount(null);
         if (error.response.status === 404) {
           setArticleError(404);
           setLoading(false);
@@ -52,13 +54,13 @@ const MainArtCard = ({article_id}) => {
           });
         }
       });
-  }, [article_id, setMessage]);
+  }, [article_id, setMessage, setCommentTotalCount]);
 
-  if(loading) return <LoaderLarge content={'Loading Article...'} />
+  if (loading) return <LoaderLarge content={"Loading Article..."} />;
 
   if (articleError === 404) return <NotFoundError message={"ARTICLE "} />;
   if (articleError === 500) return <FiveOhOhError />;
-  if (articleError) return ;
+  if (articleError) return;
 
   return (
     <section className="article-section">
@@ -78,9 +80,9 @@ const MainArtCard = ({article_id}) => {
               </span>{" "}
               <span>
                 Posted: <span className="font-weight-normal"></span>
-              {DateTime.fromISO(article.created_at).toLocaleString(
-                DateTime.DATETIME_SHORT
-              )}
+                {DateTime.fromISO(article.created_at).toLocaleString(
+                  DateTime.DATETIME_SHORT
+                )}
               </span>
             </Card.Text>
           </Card.Body>
@@ -91,9 +93,7 @@ const MainArtCard = ({article_id}) => {
         </Card>
       </article>
     </section>
-
   );
-
 };
 
 export default MainArtCard;

@@ -13,7 +13,7 @@ const CommentCard = ({ comment, deleteHandler }) => {
   const isUser = (user.username === comment.author) ? true : false;
 
   return (
-    <li className="py-2 ms-3">
+    <li className="py-2">
       <Card>
         <Card.Header className="d-flex flex-row align-items-center">
           <h4 className="me-3 my-0 p-0">{comment.author} </h4>{" "}

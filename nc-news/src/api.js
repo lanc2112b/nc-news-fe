@@ -20,9 +20,16 @@ export const getArticles = (topic = null, sortCol = null, sortDir = null, limit=
   });
 };
 
-export const getCommentsByArtId = (id) => {
+export const getCommentsByArtId = (id, limitVal, page = 1) => {
 
-  return newsApi.get(`/articles/${id}/comments`).then((results) => {
+  return newsApi
+    .get(`/articles/${id}/comments`, {
+      params: {
+        limit:limitVal,
+        p: page,
+      }
+    })
+    .then((results) => {
     return results.data.comments;
   });
 
