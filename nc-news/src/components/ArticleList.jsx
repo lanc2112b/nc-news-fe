@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { MessageContext } from "../contexts/Message";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";  //
 import { getArticles } from "../api";
 import ShortArticleCard from "./ShortArticleCard";
 import TopicCard from "./TopicCard";
@@ -12,28 +12,45 @@ import Paginator from "./Paginator";
 const ArticleList = () => {
   const navigate = useNavigate();
 
+  /** get info from URL */
   const { topic_id } = useParams();
+  const search = useLocation().search;
+  const searchObj = new URLSearchParams(search);
 
   const initialTopic = topic_id ? topic_id : null;
+  const initialPage = searchObj.get("page") ? searchObj.get("page") : 1;
 
   /** basic loading reqs */
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [topic, setTopic] = useState(initialTopic);
+  
 
   /** sort, limit, pagination etc */
-
   const [sortCol, setSortCol] = useState(null);
   const [sortDir, setSortDir] = useState(null);
   const [sortDirToggle, setSortDirToggle] = useState("desc");
   const [limitVal, setLimitVal] = useState(10);
+  const [currPage, setCurrPage] = useState(Number(initialPage));
+
+  const [articleCount, setArticleCount] = useState(0);
 
   /** error handling */
   const [articleError, setArticleError] = useState(false);
   const { setMessage } = useContext(MessageContext);
 
   const tabSelector = (event) => {
+    
+    //TODO: Alter url to include optional page number
+    /** URL E.G. SE friendly
+     * /articles/view/:topic_id/:view_num/:page_num
+     * /articles/view/football/10/2
+     * OR 
+     * /articles/view/all/25/1
+     **/
+
     const selectedTopic = event === "articles" ? null : event;
+    setCurrPage(1);
 
     if (selectedTopic) {
       navigate(`/articles/view/${selectedTopic}`);
@@ -69,14 +86,15 @@ const ArticleList = () => {
   };
 
   const backHandler = () => {
-    setTopic('');
-  }
+    setTopic("");
+  };
 
   useEffect(() => {
     setLoading(true);
-    getArticles(topic, sortCol, sortDir, limitVal)
+    getArticles(topic, sortCol, sortDir, limitVal, currPage)
       .then((results) => {
         setArticles(results.articles);
+        setArticleCount(results.total_count);
         setLoading(false);
         setArticleError(false);
         setMessage({
@@ -98,7 +116,7 @@ const ArticleList = () => {
           setLoading(false);
           setArticleError(true);
           setMessage({
-            msgType: 'error',
+            msgType: "error",
             showMsg: true,
             variant: "danger",
             title: "API Error",
@@ -106,21 +124,24 @@ const ArticleList = () => {
           });
         }
       });
-  }, [topic, sortCol, sortDir, limitVal, setMessage]);
+  }, [topic, sortCol, sortDir, limitVal, setMessage, currPage]);
 
   if (loading) return <LoaderLarge content={"Loading Articles..."} />;
 
-  if (articleError === 500) return <LoaderLarge content={"Error Loading Articles..."} />;
+  if (articleError === 500)
+    return <LoaderLarge content={"Error Loading Articles..."} />;
 
   if (articleError === 404) return <NoArticles backHandler={backHandler} />;
 
   //if (articleError) return <LoaderLarge content={"Error Loading Articles..."} />;
   //const pages =
-
+  //console.log(currPage, "current Page");
+  //console.log(articleCount, "total articles");
   /***
-   * Pages = number of articles to display / display limit (state)
-   * page = current page (state) 
+   * Pages = articleCount / limitVal
+   * page = current page (state)
    * query p = next / last page from buttons
+   * -> p = x   --> useNavigate
    */
 
   return (
@@ -141,7 +162,12 @@ const ArticleList = () => {
           );
         })}
       </ul>
-      <Paginator />
+      <Paginator
+        currPage={currPage}
+        limitVal={limitVal}
+        articleCount={articleCount}
+        setCurrPage={setCurrPage}
+      />
     </section>
   );
 };

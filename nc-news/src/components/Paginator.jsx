@@ -1,24 +1,55 @@
 import { Pagination } from 'react-bootstrap';
 
-const Paginator = () => {
-    return (
-      <Pagination>
-        <Pagination.First />
-        <Pagination.Prev />
-        <Pagination.Item>{1}</Pagination.Item>
-        <Pagination.Ellipsis />
+const Paginator = ({ currPage, articleCount, limitVal, setCurrPage }) => {
 
-        <Pagination.Item>{10}</Pagination.Item>
-        <Pagination.Item>{11}</Pagination.Item>
-        <Pagination.Item active>{12}</Pagination.Item>
-        <Pagination.Item>{13}</Pagination.Item>
-        <Pagination.Item disabled>{14}</Pagination.Item>
+  const iterator = [
+    ...Array(Math.ceil(articleCount / limitVal) + 1).keys(),
+  ].slice(1);
 
-        <Pagination.Ellipsis />
-        <Pagination.Item>{20}</Pagination.Item>
-        <Pagination.Next />
-        <Pagination.Last />
-      </Pagination>
-    );
-}
+  const prev = currPage === 1 ? 1 : currPage - 1;
+  const next = currPage === iterator.length ? iterator.length : currPage + 1;
+
+  const paginatorClickHandler = (val) => {
+    setCurrPage(val);
+  };
+
+  return (
+    <Pagination>
+      <Pagination.First
+        onClick={() => {
+          paginatorClickHandler(1);
+        }}
+      />
+      <Pagination.Prev
+        onClick={() => {
+          paginatorClickHandler(prev);
+        }}
+      />
+      {iterator.map((element) => {
+        return (
+          <Pagination.Item
+            key={element}
+            active={element === currPage}
+            onClick={() => {
+              paginatorClickHandler(element);
+            }}
+          >
+            {element}
+          </Pagination.Item>
+        );
+      })}
+
+      <Pagination.Next
+        onClick={() => {
+          paginatorClickHandler(next);
+        }}
+      />
+      <Pagination.Last
+        onClick={() => {
+          paginatorClickHandler(iterator.length);
+        }}
+      />
+    </Pagination>
+  );
+};
 export default Paginator;
