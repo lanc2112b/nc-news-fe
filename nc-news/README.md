@@ -10,7 +10,6 @@ This serves as a front end app for the backend app app, nc-news, created using r
 
 ### Main dependencies  
 ```
-
 Node
 npm
 react
@@ -21,7 +20,7 @@ luxon
 
 ### Getting started  
 
- First clone the repo, cd into the `nc-news` directory (inside the repo directory). From there run `npm install`. 
+ First clone the repo, cd into the `nc-news-fe/nc-news` directory (inside the repo directory). From there run `npm install`. 
  To run the front end locally use `npm start`.
  To build a production app, use `npm run build` and when ready deploy to your selected host, instructions will vary from this point so check with your hosting provider.
 
