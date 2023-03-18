@@ -6,11 +6,12 @@ import { UserContext } from "../contexts/User";
 import CommentCard from "./CommentCard";
 import FlashMessage from "./FlashMessage";
 import LoaderSmall from "./LoaderSmall";
+import Paginator from "./Paginator";
+import { Form } from "react-bootstrap";
 /* import NotFoundError from "./NotFoundError";
 import FiveOhOhError from "./FiveOhOhError"; */
 
-const CommentsList = ({ article_id }) => {
-  
+const CommentsList = ({ article_id, commentTotalCount }) => {
   const { user } = useContext(UserContext);
   const { setMessage } = useContext(MessageContext);
 
@@ -19,14 +20,21 @@ const CommentsList = ({ article_id }) => {
   const [comments, setComments] = useState([]);
   const [commentDeleted, setCommentDeleted] = useState(false);
 
-
   const [loading, setLoading] = useState(true);
   const [commentsError, setCommentsError] = useState(null);
 
+  /** paginator stuff */
+  const [currPage, setCurrPage] = useState(1);
+  const [limitVal, setLimitVal] = useState(10);
 
+const sortDispHandler = (event) => {
+  const val = event.target.value;
+  if (!isNaN(+val)) {
+    setLimitVal(val);
+  }
+};
 
   const deleteHandler = (event) => {
-
     const val = event.target.value;
 
     if (isNaN(val)) return;
@@ -44,7 +52,7 @@ const CommentsList = ({ article_id }) => {
           setComments(filteredComments);
           setCommentDeleted(true);
           setMessage({
-            msgType: 'info',
+            msgType: "info",
             showMsg: true,
             variant: "success",
             title: "Action Complete",
@@ -54,7 +62,7 @@ const CommentsList = ({ article_id }) => {
         })
         .catch((error) => {
           setMessage({
-            msgType: 'info',
+            msgType: "info",
             showMsg: true,
             variant: "danger",
             title: "Error",
@@ -63,11 +71,11 @@ const CommentsList = ({ article_id }) => {
           scollToRef.current.scrollIntoView();
         });
     }
-  }
+  };
 
   useEffect(() => {
     setLoading(true);
-    getCommentsByArtId(article_id)
+    getCommentsByArtId(article_id, limitVal, currPage)
       .then((results) => {
         setComments(results);
         setLoading(false);
@@ -92,12 +100,12 @@ const CommentsList = ({ article_id }) => {
           });
         }
       });
-   }, [article_id, commentDeleted,setMessage]);
+  }, [article_id, commentDeleted, setMessage, currPage, limitVal]);
 
-  if (loading) return <LoaderSmall content={'Loading Comments...'} />;
+  if (loading) return <LoaderSmall content={"Loading Comments..."} />;
   
-/*   if (commentsError === 404) return <NotFoundError message={"ARTICLE "} />;
-  if (commentsError === 500) return <FiveOhOhError />; */
+  /** maybe add a stopped 'spinner'
+   *  component here to show specific loading error */
   if (commentsError) return;
 
   return (
@@ -110,10 +118,21 @@ const CommentsList = ({ article_id }) => {
       />
       <FlashMessage id="flash_message" />
       <hr />
+      <div className="d-flex flex-row justify-content-between align-items-center">
+        <h3>Comments: </h3>
+        <Form.Select
+          className="display-filter"
+          size="sm"
+          onChange={sortDispHandler}
+          value={limitVal ?? ""}
+        >
+          <option value="10">10</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+        </Form.Select>
+      </div>
+
       <ul className="list-unstyled">
-        <li className="ms-3">
-          <h3>Comments: </h3>
-        </li>
         {comments.map((element) => {
           return (
             <CommentCard
@@ -124,6 +143,12 @@ const CommentsList = ({ article_id }) => {
           );
         })}
       </ul>
+      <Paginator
+        currPage={currPage}
+        itemCount={commentTotalCount}
+        limitVal={limitVal}
+        setCurrPage={setCurrPage}
+      />
     </section>
   );
 };
