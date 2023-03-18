@@ -5,7 +5,7 @@ import { DateTime } from 'luxon';
 const ShortArticleCard = ({ article }) => {
   return (
     <li className="mb-4">
-      <Card className="w-100 flex-row flex-wrap">
+      <Card className="w-100 flex-row flex-wrap brief_artcard">
         <Card.Img
           variant="top"
           src={article.article_img_url}
@@ -20,7 +20,7 @@ const ShortArticleCard = ({ article }) => {
             <Link to={`/articles/${article.article_id}`}>Read more...</Link>
           </Card.Text>
         </Card.Body>
-        <Card.Footer className="w-100 p-2 d-flex flex-row justify-content-between">
+        <Card.Footer className="w-100 p-2 d-flex flex-row justify-content-between small">
           <p className="mb-1">Votes: {article.votes}</p>
           <p className="mb-1">Comments: {article.comment_count} </p>
           <p className="mb-1">

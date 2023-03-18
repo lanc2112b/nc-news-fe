@@ -144,7 +144,7 @@ const ArticleList = () => {
         sortCol={sortCol}
       />
       <TopicCard tabSelector={tabSelector} topic={topic} />
-      <ul className="p-0 m-0">
+      <ul className="p-0 m-0 card_list">
         {articles.map((element) => {
           return (
             <ShortArticleCard article={element} key={element.article_id} />
