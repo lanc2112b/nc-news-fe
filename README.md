@@ -3,10 +3,8 @@
 This serves as a front end app for the backend app app, nc-news, created using react & react-bootstrap. 
 
 ### Example  
-[https://nc-fe.netlify.app/](https://nc-fe.netlify.app/)
-
 [https://news.muninn.co.uk](https://news.muninn.co.uk/articles)  
-(awaiting DNS propagation on this, mostly complete, YMMV)
+
 
 ### Main dependencies  
 ```
