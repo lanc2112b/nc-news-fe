@@ -1,35 +1,29 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { MessageContext } from "../contexts/Message";
 import { Button, Badge } from "react-bootstrap";
 import { patchArtVotes } from "../api";
 
 const ArticleVoter = ({ votes, article_id }) => {
-  let newVotes = 0;
-
   const { setMessage } = useContext(MessageContext);
 
   const [dispVotes, setDispVotes] = useState(votes);
 
+  const [newVotes, setNewVotes] = useState(0);
+
   const voterHandler = (val) => {
-      
-    newVotes = +val;
+    setNewVotes(val);
+  };
 
-    if (isNaN(newVotes)) {
-      // return a flash or toast here at some point soon
-      return;
-    }
-
-    setDispVotes(votes + newVotes);
-
-    patchArtVotes(article_id, +newVotes)// +'c'
+  useEffect(() => {
+    patchArtVotes(article_id, newVotes)
       .then((results) => {
-        newVotes = 0;
         setDispVotes(results.votes);
-        return;
+        setNewVotes(0);
       })
       .catch((error) => {
-        console.log(error)
+
         setDispVotes(votes);
+        setNewVotes(0);
         setMessage({
           msgType: "info",
           showMsg: true,
@@ -38,19 +32,19 @@ const ArticleVoter = ({ votes, article_id }) => {
           msg: "Unable to commit vote at this time, please try again later",
         });
       });
-  };
+  }, [article_id, newVotes, setMessage, votes]);
 
   return (
     <div className="d-flex flex-row align-items-center">
-      <Button className="p-2" variant="success" onClick={() => voterHandler(1)}>
+      <Button size="sm" variant="success" onClick={() => voterHandler(1)}>
         <i className="inc_vote"></i>
       </Button>
       <Badge bg="light" text="dark" className="vote_badge">
         {dispVotes}
       </Badge>
       <Button
-        className="p-2 "
         variant="danger"
+        size="sm"
         value="dec"
         onClick={() => voterHandler(-1)}
       >

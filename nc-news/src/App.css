@@ -27,9 +27,32 @@ footer {
   left: 0;
 }
 
+.article_img {
+  border-radius: 0;
+}
+
 .articles-list li {
   list-style: none;
   
+}
+
+.articles-tablist {
+  margin-left: 1px;
+}
+
+.card_list li:first-child div{
+  border-top: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.card_list li:first-child div img{
+  border-top: none;
+  border-top-left-radius: 0;
+}
+
+.brief_artcard img {
+  border-top-right-radius: 0;
 }
 
 .dropcap:first-letter {
@@ -61,32 +84,17 @@ footer {
   font-size: 0.8rem;
   margin-bottom: 1rem;
 }
+
 .inc_vote, .dec_vote {
   color: hsl(0, 0%, 99%);
 }
-.inc_vote{ /*** replace these with fontawesome or some other icons  */
-  background: url('../public/thumbs-up-solid.svg');
-  background-repeat: no-repeat;
-  background-size: cover; 
-  display: inline-block;
-  height: 1.5rem;
-  width: 1.5rem;
-  padding: 0;
-  margin: 0;
+
+.inc_vote::before{ /*** replace these with fontawesome or some other icons  */
+content: '\01F845'
 }
 
-.dec_vote { /*** replace these with fontawesome or some other icons  */
-  background: url('../public/thumbs-down-solid.svg');
-  background-repeat: no-repeat;
-  /* background-color: #fff;
-  mask-image:url('../public/thumbs-down-solid.svg') ; */
-  background-size: cover; 
-  display: inline-block;
-  height: 1.5rem;
-  width: 1.5rem;
-    padding: 0;
-  margin: 0;
-
+.dec_vote::before{ /*** replace these with fontawesome or some other icons  */
+content: '\01F847'
 }
 
 .vote_badge {

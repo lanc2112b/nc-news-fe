@@ -69,10 +69,10 @@ const MainArtCard = ({ article_id, setCommentTotalCount }) => {
           <Card.Title className="my-4 ms-4">
             <h4 className="font-weight-bold">{article.title}</h4>
           </Card.Title>
-          <Card.Img variant="top" src={article.article_img_url} />
+          <Card.Img variant="top" className="article_img" src={article.article_img_url} />
           <Card.Body>
             <Card.Text className="dropcap">{article.body}</Card.Text>
-            <Card.Text className="font-weight-bold d-flex flex-row justify-content-between ">
+            <Card.Text className="font-weight-bold d-flex flex-row justify-content-between small">
               <span>
                 {" "}
                 Author:{" "}
@@ -88,7 +88,7 @@ const MainArtCard = ({ article_id, setCommentTotalCount }) => {
           </Card.Body>
           <Card.Footer className=" d-flex flex-row justify-content-around align-items-center ">
             <ArticleVoter votes={article.votes} article_id={article_id} />
-            <p className="m-0">Comments: {article.comment_count} </p>
+            <p className="m-0 small">Comments: {article.comment_count} </p>
           </Card.Footer>
         </Card>
       </article>
