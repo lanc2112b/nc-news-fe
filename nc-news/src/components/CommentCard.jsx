@@ -38,6 +38,7 @@ const CommentCard = ({ comment, deleteHandler }) => {
                 variant="danger"
                 value={comment.comment_id}
                 className="delete-comment"
+                size="sm"
                 onClick={deleteHandler}
               ></Button>
             </OverlayTrigger>
