@@ -165,7 +165,7 @@ const ArticleList = () => {
       <Paginator
         currPage={currPage}
         limitVal={limitVal}
-        articleCount={articleCount}
+        itemCount={articleCount}
         setCurrPage={setCurrPage}
       />
     </section>
