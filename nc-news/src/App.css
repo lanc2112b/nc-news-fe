@@ -201,3 +201,8 @@ content: '\01F847'
 .card-components {
   margin-left: 3rem;
 }
+
+.profile_avatar img {
+  width: 100%;
+  height: auto;
+}

@@ -8,6 +8,7 @@ import ArticleList from './components/ArticleList';
 import MainArticle from './components/MainArticle';
 import LandingPage from './components/LandingPage';
 import UserList from './components/UserList';
+import UserProfile from './components/UserProfile';
 //import Footer from './components/Footer';
 import NotFoundError from './components/NotFoundError';
 
@@ -15,35 +16,27 @@ import NotFoundError from './components/NotFoundError';
 function App() {
   return (
     <Container fluid className="p-0">
+      <Header />
 
-        <Header />
+      <Routes>
+        <Route path="/" element={<MainSection element={<LandingPage />} />} />
+        <Route
+          path="/articles"
+          element={<MainSection element={<ArticleList />} />}
+        />
+        <Route path="/users" element={<MainSection element={<UserList />} />} />
+        <Route path="/users/:user_id" element={<MainSection element={<UserProfile />} />} />
 
-
-        <Routes>
-          <Route path="/" element={<MainSection element={<LandingPage />} />} />
-          <Route
-            path="/articles"
-            element={<MainSection element={<ArticleList />} />}
-          />
-          <Route
-            path="/users"
-            element={<MainSection element={<UserList />} />}
-          />
-
-          <Route
-            path="/articles/view/:topic_id"
-            element={<MainSection element={<ArticleList />} />}
-          />
-          <Route
-            path="/articles/:article_id"
-            element={<MainSection element={<MainArticle />} />}
-          />
-          <Route
-            path="*"
-            element={<MainSection element={<NotFoundError />} />}
-          />
-        </Routes>
-
+        <Route
+          path="/articles/view/:topic_id"
+          element={<MainSection element={<ArticleList />} />}
+        />
+        <Route
+          path="/articles/:article_id"
+          element={<MainSection element={<MainArticle />} />}
+        />
+        <Route path="*" element={<MainSection element={<NotFoundError />} />} />
+      </Routes>
     </Container>
   );
 }
