@@ -40,10 +40,13 @@ const HeaderNav = () => {
             <Nav.Link href="/users">Users</Nav.Link>
 
             <Nav.Link href="#" onClick={userHandler}>
-              Log {!user.username ? 'In': 'Out'}
+              Log {!user.username ? "In" : "Out"}
             </Nav.Link>
-            <Nav.Link href="#" className={user.username ?? "profile_link"}>
-              Profile Todo
+            <Nav.Link
+              href={user.username ? `/users/${user.username}` : `#`}
+              className={user.username ?? "profile_link"}
+            >
+              Profile
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
