@@ -1,5 +1,6 @@
 import { useContext } from "react";
-import {UserContext} from '../contexts/User'
+import { UserContext } from '../contexts/User'
+import { Link } from 'react-router-dom';
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -28,22 +29,24 @@ const HeaderNav = () => {
   return (
     <Navbar collapseOnSelect bg="dark" expand="lg" variant="dark">
       <Container>
-        <Navbar.Brand href="/">
+        <Navbar.Brand as={Link} to="/">
           <img src="/logo192.png" alt="Logo for xyz" className="App-logo" />{" "}
           NC-News
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/articles">Articles</Nav.Link>
-            <Nav.Link href="/users">Users</Nav.Link>
+            <Nav.Link as={Link} to="/">Home</Nav.Link>
+            <Nav.Link as={Link} to="/articles">
+              Articles
+            </Nav.Link>
+            <Nav.Link as={Link} to="/users">Users</Nav.Link>
 
-            <Nav.Link href="#" onClick={userHandler}>
+            <Nav.Link as={Link} to="#" onClick={userHandler}>
               Log {!user.username ? "In" : "Out"}
             </Nav.Link>
-            <Nav.Link
-              href={user.username ? `/users/${user.username}` : `#`}
+            <Nav.Link as={Link}
+              to={user.username ? `/users/${user.username}` : `#`}
               className={user.username ?? "profile_link"}
             >
               Profile
