@@ -88,3 +88,14 @@ export const getUsers = () => {
       })
   );
 };
+
+export const getUserById = (id) => {
+  return (
+    newsApi
+      .get(`/users/${id}`)
+      //.get(`/topicsz`)  // toggle the get used to force error
+      .then((results) => {
+        return results.data.user;
+      })
+  );
+};

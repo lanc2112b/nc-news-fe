@@ -1,16 +1,20 @@
+import { Link } from 'react-router-dom';
 import { Card } from "react-bootstrap";
 
 const UserCard = ({ user }) => {
     /// convert cards to cols later
     return (
       <li>
+        <Link to={`/users/${user.username}`} >
         <Card className="d-flex flex-row mb-3 user_card align-items-center">
           <div className="img_container_user">
+            
             <img
               src={user.avatar_url}
               alt="User avatar"
               className="user_card_img"
             />
+            
           </div>
           <Card.Body className="d-flex flex-row justify-content-start align-items-center">
             <Card.Title className="card-components mb-0">
@@ -19,7 +23,8 @@ const UserCard = ({ user }) => {
 
             <Card.Text className="card-components mb-0">{user.name}</Card.Text>
           </Card.Body>
-        </Card>
+          </Card>
+        </Link>
       </li>
     );
 }
