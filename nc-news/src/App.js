@@ -2,7 +2,6 @@ import './App.css';
 //import "./App.scss"; // Install and modify bootstrap sometime in the future
 import Header from './components/Header';
 import Container from "react-bootstrap/Container";
-import { Row } from 'react-bootstrap';
 import MainSection from './components/MainSection';
 import { Routes, Route } from 'react-router-dom';
 import ArticleList from './components/ArticleList';
@@ -16,10 +15,10 @@ import NotFoundError from './components/NotFoundError';
 function App() {
   return (
     <Container fluid className="p-0">
-      <Row>
+
         <Header />
-      </Row>
-      <Row>
+
+
         <Routes>
           <Route path="/" element={<MainSection element={<LandingPage />} />} />
           <Route
@@ -44,7 +43,7 @@ function App() {
             element={<MainSection element={<NotFoundError />} />}
           />
         </Routes>
-      </Row>
+
     </Container>
   );
 }
