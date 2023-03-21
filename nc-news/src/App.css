@@ -19,12 +19,15 @@
 }
 
 footer {
-  min-height: 3rem;
+  min-height: 7rem;
   background-color: var(--bs-dark);
   color: var(--bs-white);
-  position: sticky;
-  bottom: 0;
-  left: 0;
+
+}
+
+.articles {
+
+  margin-bottom: 2rem; 
 }
 
 .article_img {
