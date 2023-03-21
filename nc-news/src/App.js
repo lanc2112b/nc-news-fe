@@ -9,7 +9,7 @@ import MainArticle from './components/MainArticle';
 import LandingPage from './components/LandingPage';
 import UserList from './components/UserList';
 import UserProfile from './components/UserProfile';
-//import Footer from './components/Footer';
+import Footer from './components/Footer';
 import NotFoundError from './components/NotFoundError';
 import ApiEndpointList from './components/ApiEndpointList';
 
@@ -42,6 +42,7 @@ function App() {
         />
         <Route path="*" element={<MainSection element={<NotFoundError />} />} />
       </Routes>
+      <Footer />
     </Container>
   );
 }
