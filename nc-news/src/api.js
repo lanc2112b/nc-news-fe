@@ -4,6 +4,16 @@ const newsApi = axios.create({
   baseURL: "https://api.muninn.co.uk/api/",
 });
 
+export const getApi = () => {
+
+  return newsApi.get(`/`)
+    .then((results) => {
+     
+      return objectsToArray(results.data.endpoints)
+    });
+
+}
+
 export const getArticles = (topic = null, sortCol = null, sortDir = null, limit=40, currPage = 1) => {
   return newsApi
     .get(`/articles`, {
@@ -99,3 +109,15 @@ export const getUserById = (id) => {
       })
   );
 };
+
+
+function objectsToArray(obj) {
+  const arr = [];
+
+  for (let key in obj) {
+    const newObj = { endpoint: key, ...obj[key] };
+    arr.push(newObj);
+  }
+
+  return arr;
+}

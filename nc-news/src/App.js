@@ -11,6 +11,7 @@ import UserList from './components/UserList';
 import UserProfile from './components/UserProfile';
 //import Footer from './components/Footer';
 import NotFoundError from './components/NotFoundError';
+import ApiEndpointList from './components/ApiEndpointList';
 
 
 function App() {
@@ -20,12 +21,16 @@ function App() {
 
       <Routes>
         <Route path="/" element={<MainSection element={<LandingPage />} />} />
+        <Route path="/api" element={<MainSection element={<ApiEndpointList />} />} />
         <Route
           path="/articles"
           element={<MainSection element={<ArticleList />} />}
         />
         <Route path="/users" element={<MainSection element={<UserList />} />} />
-        <Route path="/users/:user_id" element={<MainSection element={<UserProfile />} />} />
+        <Route
+          path="/users/:user_id"
+          element={<MainSection element={<UserProfile />} />}
+        />
 
         <Route
           path="/articles/view/:topic_id"

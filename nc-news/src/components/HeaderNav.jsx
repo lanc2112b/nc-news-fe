@@ -36,16 +36,24 @@ const HeaderNav = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link as={Link} to="/">Home</Nav.Link>
+            <Nav.Link as={Link} to="/">
+              Home
+            </Nav.Link>
             <Nav.Link as={Link} to="/articles">
               Articles
             </Nav.Link>
-            <Nav.Link as={Link} to="/users">Users</Nav.Link>
+            <Nav.Link as={Link} to="/users">
+              Users
+            </Nav.Link>
+            <Nav.Link as={Link} to="/api">
+              Api
+            </Nav.Link>
 
             <Nav.Link as={Link} to="#" onClick={userHandler}>
               Log {!user.username ? "In" : "Out"}
             </Nav.Link>
-            <Nav.Link as={Link}
+            <Nav.Link
+              as={Link}
               to={user.username ? `/users/${user.username}` : `#`}
               className={user.username ?? "profile_link"}
             >
