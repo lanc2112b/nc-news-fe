@@ -4,7 +4,6 @@ import { DateTime } from "luxon";
 
 const BriefArticleCard = ({ article }) => {
   return (
-    
     <li className="mb-2">
       <Card className="w-100 bg-transparent">
         <Card.Body className="w-100 flex-row px-3 py-2">
@@ -13,14 +12,18 @@ const BriefArticleCard = ({ article }) => {
           </Card.Title>
           <Card.Text className="pb-1">
             <span className="d-inline">
-              Posted:{" "}
+              Posted by{" "}
+              <Link to={`/users/${article.author}`}>{article.author}</Link> @{" "}
               {DateTime.fromISO(article.created_at).toLocaleString(
                 DateTime.DATETIME_SHORT
               )}
             </span>
             <span className="d-inline me-3">
               {" "}
-              in <Link to={`/articles/view/${article.topic}`}>{article.topic}</Link>
+              in{" "}
+              <Link to={`/articles/view/${article.topic}`}>
+                {article.topic}
+              </Link>
             </span>
             <Link to={`/articles/${article.article_id}`}>Read more...</Link>
           </Card.Text>

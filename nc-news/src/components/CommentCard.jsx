@@ -1,6 +1,7 @@
 
 import { useContext } from "react";
 import { UserContext } from "../contexts/User";
+import { Link } from 'react-router-dom';
 import { DateTime } from 'luxon';
 import { Card } from 'react-bootstrap';
 import { Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
@@ -16,7 +17,9 @@ const CommentCard = ({ comment, deleteHandler }) => {
     <li className="py-2">
       <Card>
         <Card.Header className="d-flex flex-row align-items-center">
-          <h6 className="me-3 my-0 p-0 ">{comment.author} </h6>{" "}
+          <h6 className="me-2 mb-1 p-0 ">
+            <Link to={`/users/${comment.author}`}>{comment.author}</Link>
+          </h6>
           <p className="me-3 my-0 p-0 small">
             @{" "}
             {DateTime.fromISO(comment.created_at).toLocaleString(
@@ -29,7 +32,7 @@ const CommentCard = ({ comment, deleteHandler }) => {
         </Card.Body>
         <Card.Footer className="d-flex flex-row align-items-center justify-content-between">
           Votes: {comment.votes}
-          {(isUser === true) ? (
+          {isUser === true ? (
             <OverlayTrigger
               placement="left"
               overlay={<Tooltip id="button-tooltip-2">Delete Comment</Tooltip>}
@@ -42,7 +45,9 @@ const CommentCard = ({ comment, deleteHandler }) => {
                 onClick={deleteHandler}
               ></Button>
             </OverlayTrigger>
-          ) : ''}
+          ) : (
+            ""
+          )}
         </Card.Footer>
       </Card>
     </li>

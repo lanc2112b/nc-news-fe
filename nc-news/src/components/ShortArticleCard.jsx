@@ -21,6 +21,9 @@ const ShortArticleCard = ({ article }) => {
           </Card.Text>
         </Card.Body>
         <Card.Footer className="w-100 p-2 d-flex flex-row justify-content-between small">
+          <p className="mb-1">Author: {' '}
+            <Link to={`/users/${article.author}`}>{article.author}</Link>
+          </p>
           <p className="mb-1">Votes: {article.votes}</p>
           <p className="mb-1">Comments: {article.comment_count} </p>
           <p className="mb-1">

@@ -1,10 +1,12 @@
 import { useState, useEffect, useContext } from "react";
 import { MessageContext } from "../contexts/Message";
-//import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { DateTime } from "luxon";
 import { getArticleById } from "../api";
+
 import Card from "react-bootstrap/Card";
 import ArticleVoter from "./ArticleVoter";
-import { DateTime } from "luxon";
+
 import LoaderLarge from "./LoaderLarge";
 import NotFoundError from './NotFoundError';
 import FiveOhOhError from './FiveOhOhError';
@@ -76,7 +78,7 @@ const MainArtCard = ({ article_id, setCommentTotalCount }) => {
               <span>
                 {" "}
                 Author:{" "}
-                <span className="font-weight-normal">{article.author}</span>
+                <span className="font-weight-normal"><Link to={`/users/${ article.author }`}>{ article.author }</Link></span>
               </span>{" "}
               <span>
                 Posted: <span className="font-weight-normal"></span>
