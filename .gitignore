@@ -1,3 +1,4 @@
 nc-news/.netlify/state.json
 # Local Netlify folder
 .netlify
+nc-news/.env
