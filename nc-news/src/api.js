@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const newsApi = axios.create({
-  baseURL: "https://api.muninn.co.uk/api/",
+  baseURL: "https://news.hugin.uk/api/",
 });
 
 export const getApi = () => {
